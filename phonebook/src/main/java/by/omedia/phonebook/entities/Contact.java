@@ -3,7 +3,7 @@ package by.omedia.phonebook.entities;
 import by.phonebook.proxilayer.IContact;
 import by.phonebook.proxilayer.INote;
 
-public abstract class Contact implements IContact{
+public abstract  class Contact implements IContact{
 	
 	private String contact;
 	private INote note;
@@ -12,23 +12,23 @@ public abstract class Contact implements IContact{
 		
 	}
 
-	@Override
-	public INote getContactHolder() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getContactLine() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public INote getContactHolder() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	abstract boolean validate(String line) ;
+
 	public String getContact() {
 		return contact;
 	}
 
-	protected void setContact(String contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
 
@@ -40,6 +40,7 @@ public abstract class Contact implements IContact{
 		this.note = note;
 	}
 	
-	abstract boolean validate(String line);
+	
 
+	
 }
