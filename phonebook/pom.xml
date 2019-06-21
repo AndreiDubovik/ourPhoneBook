@@ -15,6 +15,11 @@
   </properties>
 
   <dependencies>
+  <dependency>
+	    <groupId>com.github.misterlucky1982</groupId>
+	    <artifactId>phonebook</artifactId>
+	    <version>67a7805ecf</version>
+	</dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
