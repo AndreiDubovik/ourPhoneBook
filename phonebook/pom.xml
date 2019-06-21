@@ -15,11 +15,15 @@
   </properties>
 
   <dependencies>
-  <dependency>
+	
+
+	<dependency>
 	    <groupId>com.github.misterlucky1982</groupId>
 	    <artifactId>phonebook</artifactId>
 	    <version>67a7805ecf</version>
 	</dependency>
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -27,4 +31,15 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  
+
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
+  
 </project>
