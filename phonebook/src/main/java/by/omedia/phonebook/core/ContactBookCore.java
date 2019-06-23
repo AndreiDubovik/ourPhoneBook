@@ -1,5 +1,6 @@
 package by.omedia.phonebook.core;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,33 +25,33 @@ public class ContactBookCore implements IContactBook{
 	}
 
 	@Override
-	public boolean addNote(INote arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addNote(INote note) {
+		if(note == null)return false;
+		if(this.notes.contains(note))return false;
+		this.notes.add(note);
+		return true;
 	}
 
 	@Override
-	public INote getForContact(IContact arg0) {
-		// TODO Auto-generated method stub
-		return null;
+	public INote getForContact(IContact contact) {
+		if(contact==null)return null;
+		return contact.getContactHolder();
 	}
 
 	@Override
 	public INote getForName(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
+		List<INote>list = this.notes.stream().filter(note->note.getName().equals(arg0)).limit(1).collect(Collectors.toList());
+		return list.size()==0?null:list.get(0);
 	}
 
 	@Override
 	public List<IContact> getFullContactList() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.contacts.stream().collect(Collectors.toList());
 	}
 
 	@Override
 	public List<INote> getFullNoteList() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.notes.stream().collect(Collectors.toList());
 	}
 
 	@Override
@@ -59,15 +60,39 @@ public class ContactBookCore implements IContactBook{
 	}
 
 	@Override
-	public boolean removeContact(IContact arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean removeContact(IContact contact) {
+		if(!this.contacts.contains(contact))return false;
+		INote note = contact.getContactHolder();
+		while(note.removeContact(contact));
+		if(!this.contacts.remove(contact)){
+			note.addContact(contact);
+			return false;
+		}else return true;
 	}
 
 	@Override
 	public boolean removeNote(INote arg0) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!this.notes.contains(arg0))return false;
+		for(IContact contact:this.contacts){
+			this.contacts.remove(contact);
+		}
+		return this.notes.remove(arg0);
+	}
+
+	public Set<IContact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(Set<IContact> contacts) {
+		this.contacts = contacts;
+	}
+
+	public Set<INote> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(Set<INote> notes) {
+		this.notes = notes;
 	}
 
 }
