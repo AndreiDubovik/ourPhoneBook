@@ -22,7 +22,7 @@ public abstract  class Contact implements IContact{
 		return null;
 	}
 
-	abstract boolean validate(String line) ;
+	public abstract boolean validate() ;
 
 	public String getContact() {
 		return contact;

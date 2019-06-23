@@ -14,7 +14,7 @@ public class PhoneNumber extends Contact{
 	}
 
 	@Override
-	boolean validate(String line) {
+	public boolean validate() {
 		// TODO Auto-generated method stub
 		return false;
 	}
