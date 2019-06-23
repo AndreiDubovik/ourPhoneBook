@@ -18,6 +18,9 @@ public class PhoneNumber extends Contact{
 
 	@Override
 	public boolean validate() {
+		if(this.getContact() == null){
+			return false;
+		}
 		final String PNONE_PATTERN = "^((\\+?375)([0-9]{7,9}))$";
 		Pattern pattern = Pattern.compile(PNONE_PATTERN);
 		Matcher matcher = pattern.matcher(this.getContact());
