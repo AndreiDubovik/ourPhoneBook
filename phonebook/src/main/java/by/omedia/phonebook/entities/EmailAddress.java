@@ -5,28 +5,26 @@ import java.util.regex.Pattern;
 
 import by.phonebook.proxilayer.INote;
 
-public class PhoneNumber extends Contact{
-	
-	public PhoneNumber(){
+public class EmailAddress extends Contact{
+
+	public EmailAddress(){
 		
 	}
 	
-	public PhoneNumber(String number, INote note){
+	public EmailAddress(String number, INote note){
 		super.setNote(note);
 		super.setContact(number);
 	}
-
+	
 	@Override
 	public boolean validate() {
 		if(this.getContact() == null){
 			return false;
 		}
-		final String PNONE_PATTERN = "^((\\+?375)([0-9]{7,9}))$";
-		Pattern pattern = Pattern.compile(PNONE_PATTERN);
+		final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+		Pattern pattern = Pattern.compile(EMAIL_PATTERN);
 		Matcher matcher = pattern.matcher(this.getContact());
 		return matcher.matches();
 	}
-
-	
 
 }
