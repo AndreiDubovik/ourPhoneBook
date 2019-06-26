@@ -25,7 +25,7 @@ public abstract  class Contact implements IContact{
 	public abstract boolean validate() ;
 
 	public String getContact() {
-		return contact;
+		return this.contact;
 	}
 
 	public void setContact(String contact) {
@@ -33,7 +33,7 @@ public abstract  class Contact implements IContact{
 	}
 
 	public INote getNote() {
-		return note;
+		return this.note;
 	}
 
 	public void setNote(INote note) {
