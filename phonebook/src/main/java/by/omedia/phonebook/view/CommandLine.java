@@ -7,11 +7,12 @@ import java.util.Scanner;
 
 import by.omedia.phonebook.command.Command;
 import by.omedia.phonebook.command.ICommandListener;
+import by.omedia.phonebook.command.IMessageView;
 import by.phonebook.proxilayer.IContact;
 import by.phonebook.proxilayer.INote;
 import by.phonebook.proxilayer.IView;
 
-public class CommandLine implements IView,ICommandListener{
+public class CommandLine implements IView,ICommandListener,IMessageView{
 	
 	private Scanner scanner = new Scanner(System.in);
 
@@ -46,17 +47,27 @@ public class CommandLine implements IView,ICommandListener{
 	public Command getCommand(Command...commands) {
 		System.out.println("Варианты дальнейших действий:");
 		boolean exit = false;
+		boolean cont = false;
 		int i = 1;
 		Map<Integer,Command>commandMap = new HashMap<>();
 		for(Command command:commands){
-			if(command==Command.CONTINUE)continue;
-			if(command==Command.EXIT)exit=true;
+			if(command==Command.CONTINUE){
+				cont = true;
+				continue;
+			}
+			if(command==Command.EXIT){
+				exit=true;
+				continue;
+			}
 			commandMap.put(i, command);
 			System.out.println((i++)+" - "+command.toString());
 		}
 		if(exit){
 			commandMap.put(0, Command.EXIT);
 			System.out.println("... для выхода из программы введите '0'");
+		}
+		if(cont){
+			System.out.println("... любой другой ключ для выхода в главное меню");
 		}
 		Integer integer = this.getInteger("что делаем дальше?");
 		Command command = commandMap.get(integer);
@@ -78,6 +89,11 @@ public class CommandLine implements IView,ICommandListener{
 	public String getString(String question) {
 		System.out.println(question);
 		return scanner.nextLine();
+	}
+
+	@Override
+	public void showMessage(String message) {
+		System.out.println(message);
 	}
 	
 }

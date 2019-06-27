@@ -12,6 +12,8 @@ public enum Command {
 	UPDATE_CONTACT("Изменить контакт"),
 	SEARCH_NOTE_FOR_NAME("Искать запись по имени"),
 	SEARCH_NOTE_FOR_CONTACT("Искать запись по контакту"),
+	SHOW_CONTACT_INFO("Показать информацию о контакте"),
+	SHOW_NOTE_INFO("Показать информацию о записи"),
 	CANCEL("Отмена"),
 	CONTINUE("Продолжить"),
 	SAVE("Сохранить изменения"),
