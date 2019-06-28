@@ -8,28 +8,40 @@ import by.phonebook.proxilayer.INote;
 
 public class Note implements INote{
 
+	private String name;
+	private List<IContact> contacts;
+	
+	public Note() {
+		
+	}
+	
+	public Note(String name, List<IContact> contacts) {
+		this.name = name;
+		this.contacts = contacts;
+	}
+	
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
 	public List<IContact> getContacts() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.contacts;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 
-
-
+	public void setContacts(List<IContact> contacts) {
+		this.contacts = contacts;
+	}
+	
 	public boolean removeContact(IContact contact) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.contacts != null && this.contacts.remove(contact);
 	}
 
 	public boolean addContact(IContact contact) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.contacts != null && contact != null && this.contacts.add(contact);
 	}
-
 	
-
 }
