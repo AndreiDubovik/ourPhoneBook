@@ -37,23 +37,11 @@ public class Note implements INote{
 	}
 	
 	public boolean removeContact(IContact contact) {
-		if(contact == null){
-			return false;
-		}
-		if(!this.contacts.contains(contact)) {
-			return false;
-		}
-		return this.contacts.remove(contact);
+		return this.contacts != null && this.contacts.remove(contact);
 	}
 
 	public boolean addContact(IContact contact) {
-		if(contact == null) {
-			return false;
-		}
-		if(this.contacts.contains(contact)){
-			return false;
-		} 
-		return this.contacts.add(contact);
+		return this.contacts != null && contact != null && this.contacts.add(contact);
 	}
 	
 }
