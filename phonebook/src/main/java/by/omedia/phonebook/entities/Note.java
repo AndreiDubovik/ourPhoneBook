@@ -1,5 +1,6 @@
 package by.omedia.phonebook.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import by.phonebook.proxilayer.IContact;
@@ -13,6 +14,11 @@ public class Note implements INote{
 	
 	public Note() {
 		
+	}
+	
+	public Note(String name){
+		this.name = name;
+		this.contacts = new ArrayList<>();
 	}
 	
 	public Note(String name, List<IContact> contacts) {

@@ -4,7 +4,7 @@ public enum Command {
 	
 	SHOW_NOTE_LIST("Показать весь список записей"),
 	SHOW_CONTACT_LIST("Показать весь список контактов"),
-	ADD_NOTE("Добавить контакт"),
+	ADD_NOTE("Добавить запись"),
 	DELETE_NOTE("Удалить запись"),
 	UPDATE_NOTE("Изменить запись"),
 	ADD_CONTACT("Добавить контакт"),

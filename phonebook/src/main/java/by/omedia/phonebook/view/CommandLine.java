@@ -8,6 +8,9 @@ import java.util.Scanner;
 import by.omedia.phonebook.command.Command;
 import by.omedia.phonebook.command.ICommandListener;
 import by.omedia.phonebook.command.IMessageView;
+import by.omedia.phonebook.entities.EmailAddress;
+import by.omedia.phonebook.entities.Note;
+import by.omedia.phonebook.entities.PhoneNumber;
 import by.phonebook.proxilayer.IContact;
 import by.phonebook.proxilayer.INote;
 import by.phonebook.proxilayer.IView;
@@ -94,6 +97,17 @@ public class CommandLine implements IView,ICommandListener,IMessageView{
 	@Override
 	public void showMessage(String message) {
 		System.out.println(message);
+	}
+	
+	public INote addNote() {
+		System.out.println("Введите имя записи:");
+		return new Note(scanner.nextLine());
+	}
+	
+	public IContact addContact(INote note) {
+		System.out.println("Введите контакт");
+		String contact = scanner.nextLine();
+		return new EmailAddress(contact, note);
 	}
 	
 }

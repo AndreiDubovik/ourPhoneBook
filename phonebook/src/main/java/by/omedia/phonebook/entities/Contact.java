@@ -13,13 +13,11 @@ public abstract  class Contact implements IContact{
 	}
 
 	public String getContactLine() {
-		// TODO Auto-generated method stub
-		return null;
+		return contact;
 	}
 
 	public INote getContactHolder() {
-		// TODO Auto-generated method stub
-		return null;
+		return note;
 	}
 
 	public abstract boolean validate() ;
@@ -39,8 +37,5 @@ public abstract  class Contact implements IContact{
 	public void setNote(INote note) {
 		this.note = note;
 	}
-	
-	
-
 	
 }

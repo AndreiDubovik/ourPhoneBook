@@ -1,6 +1,5 @@
 package by.omedia.phonebook.core;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -74,7 +73,8 @@ public class ContactBookCore implements IContactBook{
 	public boolean removeNote(INote arg0) {
 		if(!this.notes.contains(arg0))return false;
 		for(IContact contact:this.contacts){
-			this.contacts.remove(contact);
+			if(contact.getContactHolder()== arg0)
+				this.contacts.remove(contact);
 		}
 		return this.notes.remove(arg0);
 	}

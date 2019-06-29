@@ -40,7 +40,7 @@ public class Application implements IApplication {
 	}
 	
 	private void run(){
-		Command[]commands = {Command.SHOW_NOTE_LIST,Command.SHOW_CONTACT_LIST,Command.ADD_NOTE,Command.EXIT};
+		Command[]commands = {Command.SHOW_NOTE_LIST,Command.SHOW_CONTACT_LIST, Command.ADD_NOTE, Command.EXIT};
 		while(this.controller.process(this.commandListener.getCommand(commands)));
 		exit();
 	}
