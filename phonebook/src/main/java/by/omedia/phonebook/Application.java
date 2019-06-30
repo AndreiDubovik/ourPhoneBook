@@ -1,6 +1,7 @@
 package by.omedia.phonebook;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import by.omedia.phonebook.command.Command;
 import by.omedia.phonebook.command.Controller;
@@ -9,12 +10,15 @@ import by.omedia.phonebook.command.IController;
 import by.omedia.phonebook.command.IMessageView;
 import by.omedia.phonebook.core.ContactBookCore;
 import by.omedia.phonebook.view.CommandLine;
+import by.phonebook.proxilayer.IContact;
 import by.phonebook.proxilayer.IContactBook;
+import by.phonebook.proxilayer.INote;
 import by.phonebook.proxilayer.IView;
 
 public class Application implements IApplication {
 	
 	private static Application APP = new Application();
+	private static String FILE_NAME = "contacts.dat"; 
 	
 	private ICommandListener commandListener;
 	private IMessageView messageView;
@@ -32,8 +36,8 @@ public class Application implements IApplication {
 		this.messageView = cl;
 		this.view = cl;
 		ContactBookCore cb = new ContactBookCore();
-		cb.setContacts(new HashSet<>());
-		cb.setNotes(new HashSet<>());
+		cb.setContacts(readContacts());
+		cb.setNotes(readNotes());
 		this.book = cb;
 		this.controller = new Controller(this);
 		
@@ -46,6 +50,7 @@ public class Application implements IApplication {
 	}
 	
 	private void exit(){
+		write(this.book);
 		this.messageView.showMessage("До свиданья");
 	}
 	
@@ -79,7 +84,17 @@ public class Application implements IApplication {
 	}
 
 	
+	private Set<INote> readNotes(){
+		return new HashSet<>();
+	}
 	
+	private Set<IContact> readContacts(){
+		return new HashSet<>();
+	}
+	
+	private void write(IContactBook book){
+		
+	};
 	
 
 }
