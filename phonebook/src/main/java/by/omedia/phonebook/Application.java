@@ -1,6 +1,7 @@
 package by.omedia.phonebook;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import by.omedia.phonebook.command.Command;
@@ -9,6 +10,7 @@ import by.omedia.phonebook.command.ICommandListener;
 import by.omedia.phonebook.command.IController;
 import by.omedia.phonebook.command.IMessageView;
 import by.omedia.phonebook.core.ContactBookCore;
+import by.omedia.phonebook.core.SQLContactBook;
 import by.omedia.phonebook.view.CommandLine;
 import by.phonebook.proxilayer.IContact;
 import by.phonebook.proxilayer.IContactBook;
@@ -35,18 +37,20 @@ public class Application implements IApplication {
 		this.commandListener = cl;
 		this.messageView = cl;
 		this.view = cl;
-		ContactBookCore cb = new ContactBookCore();
-		cb.setContacts(readContacts());
-		cb.setNotes(readNotes());
-		this.book = cb;
+		this.book = new SQLContactBook();
 		this.controller = new Controller(this);
 		
 	}
 	
 	private void run(){
+		/*
 		Command[]commands = {Command.SHOW_NOTE_LIST,Command.SHOW_CONTACT_LIST,Command.ADD_NOTE,Command.EXIT};
 		while(this.controller.process(this.commandListener.getCommand(commands)));
 		exit();
+		*/
+		List<IContact>list = this.book.getFullContactList();
+		for(IContact contact:list)System.out.println(contact.getContactLine());
+		System.out.println(list.size());
 	}
 	
 	private void exit(){

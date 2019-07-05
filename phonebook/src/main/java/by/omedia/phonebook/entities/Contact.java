@@ -14,7 +14,7 @@ public abstract  class Contact implements IContact{
 
 	public String getContactLine() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.contact;
 	}
 
 	public INote getContactHolder() {
