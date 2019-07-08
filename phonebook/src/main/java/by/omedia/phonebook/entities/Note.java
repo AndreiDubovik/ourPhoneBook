@@ -8,6 +8,7 @@ import by.phonebook.proxilayer.INote;
 
 public class Note implements INote{
 
+	private int id;
 	private String name;
 	private List<IContact> contacts;
 	
@@ -43,5 +44,15 @@ public class Note implements INote{
 	public boolean addContact(IContact contact) {
 		return this.contacts != null && contact != null && this.contacts.add(contact);
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	
 }

@@ -54,25 +54,28 @@ public class SQLContactBook implements IContactBook{
 
 	@Override
 	public boolean addContact(IContact arg0) {
-		// TODO Auto-generated method stub
-		return false;
+		// "insert into contacts (contact,note_id) values ('"+arg0.getContactLine()+"',"+((Note)arg0.getContactHolder()).getId()+");"
+		INote note = arg0.getContactHolder();
+		if(note==null)return false;
+		
 	}
 
 	@Override
 	public boolean addNote(INote arg0) {
+		// "insert into notes (name) values ('"+arg0.getName()+"')"
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public INote getForContact(IContact arg0) {
-		// TODO Auto-generated method stub
+		// 
 		return null;
 	}
 
 	@Override
 	public INote getForName(String arg0) {
-		// TODO Auto-generated method stub
+		// "select id,name from notes where name = '"+arg0.getName()+"'"
 		return null;
 	}
 
@@ -108,17 +111,19 @@ public class SQLContactBook implements IContactBook{
 	@Override
 	public List<INote> getFullNoteList() {
 		// TODO Auto-generated method stub
+		// select id, name from notes
 		return null;
 	}
 
 	@Override
 	public List<INote> getNoteListForName(String arg0) {
-		// TODO Auto-generated method stub
+		// select id,name from notes where name like '%"+arg0+"%'
 		return null;
 	}
 
 	@Override
 	public boolean removeContact(IContact arg0) {
+		// delete from contacts where id = "+((Contact)arg0).getId()
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -126,6 +131,8 @@ public class SQLContactBook implements IContactBook{
 	@Override
 	public boolean removeNote(INote arg0) {
 		// TODO Auto-generated method stub
+		// delete from contacts where note_id= ((Note)arg0).getId()
+		// delete from notes where id = ((Note)arg0).getId()
 		return false;
 	}
 

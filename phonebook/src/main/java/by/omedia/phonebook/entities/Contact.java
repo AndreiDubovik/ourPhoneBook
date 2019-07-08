@@ -5,6 +5,7 @@ import by.phonebook.proxilayer.INote;
 
 public abstract  class Contact implements IContact{
 	
+	private int id;
 	private String contact;
 	private INote note;
 	
@@ -38,6 +39,14 @@ public abstract  class Contact implements IContact{
 
 	public void setNote(INote note) {
 		this.note = note;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
